@@ -1,6 +1,6 @@
 {
   "name": "pinyin2",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "root": "util",
   "description": "转换汉字为拼音",
   "keywords": [
@@ -25,11 +25,10 @@
   },
   "readmeFilename": "README.md",
   "gitHead": "175c63dbdc3e2133a7d4ad12b78ce526928e3b0b",
-  "main": "pinyin.js",
+  "main": "index",
   "directories": {
     "example": "examples",
-    "test": "tests",
-		"src": "src"
+    "test": "tests"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
