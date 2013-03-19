@@ -1,13 +1,3 @@
-define(function(require) {
-
-    var pinyin = require('../src/pinyin');
-
-    describe('pinyin', function() {
-
-        test('normal usage', function() {
-
-        });
-    });
-
-});
-
+var pinyin = require('../index');
+var result = pinyin('关节炎');
+console.log(result);
