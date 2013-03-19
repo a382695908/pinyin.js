@@ -8,7 +8,7 @@
 
 ## 使用说明
 
-    var pinyin = require("pinyin");
+    var pinyin = require("pinyin2");
 
     pinyin("重点");
     pinyin("重点", {
