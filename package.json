@@ -1,6 +1,6 @@
 {
   "name": "pinyin2",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "root": "util",
   "description": "转换汉字为拼音",
   "keywords": [
