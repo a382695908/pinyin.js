@@ -1,44 +1,104 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta name="generator" content="gvim" />
-<meta name="author" content="闲耘 (mail[AT]xianyun.org)" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<style type="text/css" media="screen">
-#pin,#pin2{
-    border:1px solid #ccc;
-    pidding:5px;
-    white-space:-moz-pre-wrap; white-space:-pre-wrap; white-space:-o-pre-wrap; white-space:pre-wrap;
-    word-wrap:break-word; word-break:normal;
-}
-</style>
-<title>Pinyin</title>
-</head>
-<body>
-    <div><textarea id="han" name="han" rows="8" cols="40">天将降大任于斯人也。This is a test for English.</textarea></div>
-Single Pinyin:
-<div id="pin"></div>
-<hr />
-Multi Pinyin:
-<div id="pin2"></div>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Pinyin.js by princetoad</title>
 
-<script id="src-dict" type="text/javascript" src="pinyin.dict.src.js"></script>
-<!--注意：不要同时导入多个词典库，否则多音字组合时性能非常成问题。-->
-<!--<script type="text/javascript" src="pinyin.tone.src.js"></script>-->
-<!--<script type="text/javascript" src="pinyin.tone2.src.js"></script>-->
-<script type="text/javascript" src="pinyin.js"></script>
-<script type="text/javascript">/*<![CDATA[*/
-    function $(id){
-        return document.getElementById(id);
-    }
-    $("han").onkeyup = function(){
-        $("pin").innerHTML = pinyin(this.value, true, ",");
-        $("pin2").innerHTML = pinyin(this.value, false,",");
-    };
-/*]]>*/</script>
-</body>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Pinyin.js</h1>
+        <p>将汉字转为拼音(Convert Chinese to Pinyin) 【极速】</p>
+        <p class="view"><a href="https://github.com/princetoad/pinyin.js">View the Project on GitHub <small>princetoad/pinyin.js</small></a></p>
+        <ul>
+          <li><a href="https://github.com/princetoad/pinyin.js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/princetoad/pinyin.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/princetoad/pinyin.js">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>汉语拼音(pinyin)</h1>
+
+<hr><p>// 转换中文字符为拼音。</p>
+
+<hr><h2>使用说明</h2>
+
+<pre><code>var pinyin = require("pinyin2");
+
+pinyin("重点");
+pinyin("重点", {
+  style: pinyin.STYLE_NORMAL,
+  heteronym: true
+});
+</code></pre>
+
+<h2>API</h2>
+
+<h3>方法 <code>&lt;Array&gt; pinyin(words[, options])</code>
+</h3>
+
+<p>将传入的中文字符(words)转换成拼音符号。</p>
+
+<p>options 是可选的，可以设定拼音风格，或打开多音字选项。</p>
+
+<h3>参数 <code>&lt;Boolean&gt; options.heteronym</code>
+</h3>
+
+<p>是否启用多音字模式，默认关闭。</p>
+
+<p>关闭多音字模式时，返回每个汉字第一个匹配的拼音。</p>
+
+<p>启用多音字模式时，返回多音字的所有拼音列表。</p>
+
+<h3>属性 <code>.STYLE_NORMAL</code>
+</h3>
+
+<p>普通风格，即不带音标。</p>
+
+<p>如：<code>pin yin</code></p>
+
+<h3>属性 <code>.STYLE_TONE</code>
+</h3>
+
+<p>声调风格，拼音声调在韵母第一个字母上。</p>
+
+<p>如：<code>pīn yīn</code></p>
+
+<h3>属性 <code>.STYLE_TONE2</code>
+</h3>
+
+<p>声调风格2，即拼音声调在各个拼音之后，用数字 [0-4] 进行表示。</p>
+
+<p>如：<code>pin1 yin1</code></p>
+
+<h3>属性 <code>.STYLE_INITIALS</code>
+</h3>
+
+<p>声母风格，只返回各个拼音的声母部分。</p>
+
+<p>如：<code>p y</code></p>
+
+<h3>属性 <code>.STYLE_FIRST_LETTER</code>
+</h3>
+
+<p>首字母风格，只返回拼音的首字母部分。</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/princetoad">princetoad</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
 </html>
